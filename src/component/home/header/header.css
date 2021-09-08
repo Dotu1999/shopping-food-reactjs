@@ -1,0 +1,11 @@
+img {
+  height: 400px;
+  width: 100%;
+}
+.header h3,
+.header p {
+  text-shadow: 0 0 7px black;
+}
+.header {
+  padding: 10px;
+}
