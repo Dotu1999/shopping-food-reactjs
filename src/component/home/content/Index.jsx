@@ -25,12 +25,12 @@ function Content(props) {
     return (
         <>
             <div className="row" id="nav-content">
-                <div className="col-md-5">
+                <div className="col-md-5 col-sm-8 col-7">
                     <input type="search" placeholder="Nhập sản phẩm bạn cần tìm ?"
                         aria-describedby="button-addon8" className="form-control" value={title} onChange={changeTitle} />
                     {/* <i className="fas fa-search"></i> */}
                 </div>
-                <div className="col-md-7">
+                <div className="col-md-7 col-sm-4 col-5">
                     <div className="cart" data-toggle="modal" data-target="#myModal">
                         {/* <h4>Giỏ hàng </h4> */}
                         <i className="fas fa-shopping-cart fa-2x"></i>
