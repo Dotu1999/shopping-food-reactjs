@@ -28,6 +28,7 @@ function Home() {
             const searchTitle = e.target.value;
             setpage(1);
             setTitle(searchTitle);
+            alert("Bạn đã hoàn thành tìm kiếm ");
         }
         // const searchTitle = e.target.value;
         // setpage(1);
