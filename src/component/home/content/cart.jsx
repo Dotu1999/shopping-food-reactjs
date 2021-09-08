@@ -48,18 +48,23 @@ function Cart(props) {
                                 {listCart.map((each) => (
                                     <div key={each.product.id}>
                                         <div className="itemCart row">
-                                            <img className="col-md-2" src={LinkIMG + each.product.picture} alt="" />
-                                            <div className="col-md-2">
+                                            {/* <img className="col-md-2 col-2" src={LinkIMG + each.product.picture} alt="" /> */}
+                                            <div className="col-md-3 col-3">
+                                                {/* <img className="" src={LinkIMG + each.product.picture} alt="" /> */}
+                                                <img className="" src={each.product.picture} alt="" />
                                                 <p style={{ fontSize: '16px' }}>{each.product.name}</p>
                                             </div>
-                                            <div className="col-md-3 quantity" >
+                                            <div className="col-md-3 col-3 quantity" >
                                                 <span className="-" onClick={(e) => changeQuatity(e, each)}>-</span>
                                                 <span>{each.quantity}</span>
                                                 <span className="+" style={{ color: '#64c4af' }} onClick={(e) => changeQuatity(e, each)}>+</span>
                                             </div>
-                                            <div className="col-md-5 cart_price">
-                                                <h5>${Number(each.product.price).toFixed(2)} &nbsp; &nbsp; </h5>
-                                                <button className="btn btn-secondary" onClick={() => deleteCart(each)}>Delete</button>
+                                            <div className="col-md-4 col-4 cart_price">
+                                                <h5 style={{ paddingTop: "10px" }}>${Number(each.product.price).toFixed(2)} &nbsp; &nbsp; </h5>
+                                                {/* <button className="btn btn-secondary" onClick={() => deleteCart(each)}>Delete</button> */}
+                                            </div>
+                                            <div className="col-md-2 col-2 cart_price">
+                                                <i className="fas fa-trash-alt" onClick={() => deleteCart(each)}></i>
                                             </div>
                                         </div>
                                         <hr />
@@ -68,7 +73,7 @@ function Cart(props) {
                                 ))}
                             </div>
                             {(listCart.length == 0) ? (<><h3>No product in your cart</h3><p>Please choose product !</p></>) : ''}
-                            <hr />
+                            {/* <hr /> */}
                             <div className="totalCart" style={{ display: (listCart.length == 0) ? "none" : " " }} >
                                 <h4>Total :</h4>
                                 <h5 style={{ overflow: 'hidden' }}>{Number(total).toFixed(2)} $</h5>

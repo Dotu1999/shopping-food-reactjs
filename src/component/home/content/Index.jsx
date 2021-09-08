@@ -17,7 +17,6 @@ function Content(props) {
                 product: data,
                 quantity: 1
             }
-            // console.log("lineItem:" + lineItem.product.id);
             addToListCart(lineItem);
             alert("Bạn vừa thêm sản phẩm này vào giỏ hàng")
         }
@@ -26,9 +25,11 @@ function Content(props) {
         <>
             <div className="row" id="nav-content">
                 <div className="col-md-5 col-sm-8 col-7">
-                    <input type="search" placeholder="Nhập sản phẩm bạn cần tìm ?"
-                        aria-describedby="button-addon8" className="form-control" value={title} onChange={changeTitle} />
+                    {/* <input type="search" placeholder="Nhập sản phẩm bạn cần tìm ?"
+                        aria-describedby="button-addon8" className="form-control" value={title} onChange={changeTitle} /> */}
                     {/* <i className="fas fa-search"></i> */}
+                    <input type="search" placeholder="Nhập sản phẩm bạn cần tìm ?"
+                        aria-describedby="button-addon8" className="form-control" onKeyDown={changeTitle} />
                 </div>
                 <div className="col-md-7 col-sm-4 col-5">
                     <div className="cart" data-toggle="modal" data-target="#myModal">
@@ -88,7 +89,8 @@ function Content(props) {
                                 return (
                                     <div className="card bg-light" key={product.id}>
                                         <div className="card-body text-center">
-                                            <img style={{ height: '200px' }} src={LinkIMG + product.picture} alt="food" />
+                                            {/* <img style={{ height: '200px' }} src={LinkIMG + product.picture} alt="food" /> */}
+                                            <img style={{ height: '200px' }} src={product.picture} alt="food" />
                                             <br />
                                             <h4 className="card-text">{product.name}</h4>
                                             <h6 className="content_price">price : {Number(product.price).toFixed(2)} $</h6>
@@ -103,7 +105,7 @@ function Content(props) {
                 </div>
             </div>
             <div>
-                <div className="pagination">
+                <div className="pagination" style={{ display: (listProduct.length == 0) ? 'none' : '' }}>
                     <Pagination
                         // className="my-8"
                         count={count}

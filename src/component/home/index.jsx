@@ -4,11 +4,11 @@ import Header from './header/Header';
 import Fooder from './footder/Fooder';
 import Content from './content/Index';
 import ProdectService from '..//../service/Product_service'
-Home.propTypes = {
+// Home.propTypes = {
 
-};
+// };
 
-function Home(props) {
+function Home() {
     const [listProduct, setListProduct] = useState([]);
     const [page, setpage] = useState(1);
     const [pageLimit] = useState(6);
@@ -24,16 +24,37 @@ function Home(props) {
         setpage(value);
     };
     const onChangeSearchTitle = (e) => {
-        const searchTitle = e.target.value;
-        setpage(1);
-        setTitle(searchTitle);
+        if (e.key === 'Enter') {
+            const searchTitle = e.target.value;
+            setpage(1);
+            setTitle(searchTitle);
+        }
+        // const searchTitle = e.target.value;
+        // setpage(1);
+        // setTitle(searchTitle);
     };
     useEffect(() => {
-        // get product
-        ProdectService.getAll(page - 1, pageLimit, title)
+        // get product by sever spring boot
+        // ProdectService.getAll(page - 1, pageLimit, title)
+        //     .then((res) => {
+        //         setListProduct(res.data.tutorials);
+        //         setTotalPage(res.data.totalPages);
+        //     })
+        //     .catch((err) => {
+        //         console.log("loi");
+        //     })
+        // get product by fake api mockapi
+        ProdectService.getAllByName(title)
             .then((res) => {
-                setListProduct(res.data.tutorials);
-                setTotalPage(res.data.totalPages);
+                setTotalPage(Math.ceil(res.data.length / pageLimit));
+                // console.log(res.data.length)
+            })
+            .catch((err) => {
+                console.log("looi");
+            })
+        ProdectService.getProduct(page, pageLimit, title)
+            .then((res) => {
+                setListProduct(res.data);
             })
             .catch((err) => {
                 console.log("loi");
