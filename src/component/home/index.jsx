@@ -4,9 +4,8 @@ import Header from './header/Header';
 import Fooder from './footder/Fooder';
 import Content from './content/Index';
 import ProdectService from '..//../service/Product_service'
-// Home.propTypes = {
-
-// };
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Home() {
     const [listProduct, setListProduct] = useState([]);
@@ -15,6 +14,16 @@ function Home() {
     const [totalPage, setTotalPage] = useState(0);
     const [title, setTitle] = useState('');
     const [listCart, setListCart] = useState([]);
+    //thong bao
+    const notify = (data) => toast(data, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     const addToListCart = (data) => {
         const newListCart = [...listCart];
         newListCart.push(data)
@@ -28,7 +37,7 @@ function Home() {
             const searchTitle = e.target.value;
             setpage(1);
             setTitle(searchTitle);
-            alert("Bạn đã hoàn thành tìm kiếm ");
+            notify("Bạn đã hoàn thành tìm kiếm ");
         }
         // const searchTitle = e.target.value;
         // setpage(1);

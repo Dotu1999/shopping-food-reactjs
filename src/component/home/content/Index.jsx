@@ -4,25 +4,48 @@ import './context.css'
 import LinkIMG from '../../../api/getImg';
 import Pagination from "@material-ui/lab/Pagination";
 import Cart from './cart'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 Content.propTypes = {
     listProduct: PropTypes.array,
 };
 function Content(props) {
+    const notify = (data) => toast(data, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     const { listProduct, count, setPage, page, title, changeTitle, addToListCart, listCart, setListCart } = props;
     const addToCart = (event, data) => {
         // console.log(event.target.className);
-        if (event.target.className == "btn noAddCart") { alert("sản phẩm này đã có trong giỏ hàng của bạn") }
+        if (event.target.className == "btn noAddCart") { notify("Sản phẩm này đã có trong giỏ hàng của bạn") }
         else {
             const lineItem = {
                 product: data,
                 quantity: 1
             }
             addToListCart(lineItem);
-            alert("Bạn vừa thêm sản phẩm này vào giỏ hàng")
+            notify("Bạn vừa thêm sản phẩm này vào giỏ hàng");
+
         }
     }
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="row" id="nav-content">
                 <div className="col-md-5 col-sm-8 col-7">
                     {/* <input type="search" placeholder="Nhập sản phẩm bạn cần tìm ?"
@@ -40,6 +63,7 @@ function Content(props) {
                 </div>
             </div>
             <div className="row">
+                {/* <ToastContainer /> */}
                 <div className="sidebar-container col-md-3" style={{ maxHeight: '450px' }}>
                     <div className="sidebar-logo">
                         Bếp Việt
